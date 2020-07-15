@@ -147,9 +147,9 @@ export default {
   "Number, Street Name, Apt #": "상세주소",
   "Submit": "제출",
 
-  "Psst, even though it's just a demo": "Psst, even though it's just a demo...",
-  "Any data that you enter is securely protected and encrypted": "Any data that you enter is securely protected and encrypted. It will be added as an attestation to your uPort Identity (you can always delete it at any time).",
-  "We do not store any of this information and do not reveal it to any party": "We do not store any of this information and do not reveal it to any party.",
+  "Psst, even though it's just a demo": "잠깐만요, 이건 데모이긴 합니다만...",
+  "Any data that you enter is securely protected and encrypted": "입력하는 모든 데이터는 안전하게 처리됩니다. 그리고 언제든지 앱에서 삭제가 가능합니다.",
+  "We do not store any of this information and do not reveal it to any party": "입력된 정보는 서버에 저장되지 않으며, 앱에만 저장되니 안심하고 이용하세요.",
 
   "Good News!": "축하합니다!",
   "regnSuccessHeading1": "축하합니다!",
