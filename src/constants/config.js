@@ -2,7 +2,8 @@ import dayjs from "dayjs";
 
 // Images/Logos
 import logo from "../images/uport-logo.svg";
-import CityIDIcon from "../images/city-logo.png";
+//import CityIDIcon from "../images/city-logo.png";
+import CityIDIcon from "../images/NHIS_logo.png";
 import DiplomaIcon from "../images/university-logo.png";
 import EmploymentIcon from "../images/company-logo.png";
 import InsuranceIcon from "../images/insurance-logo.png";
