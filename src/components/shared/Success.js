@@ -7,12 +7,12 @@ import { withTranslation } from "react-i18next";
 import * as actions from "../../actions";
 import { isLoggedIn } from "../../selectors";
 import * as theme from "./theme";
-import { Grid, Col, Spacer, medium } from "./grid";
+//import { Grid, Col, Spacer, medium } from "./grid";
 import { InvLinkButton } from "./elements";
-import getDependentServices from "../../utils/getDependentServices";
+//import getDependentServices from "../../utils/getDependentServices";
 import SuccessIcon from "../../images/congratulations-city.svg";
-import LikeDemo from "./LikeDemo";
-import Card from "./ServiceCard";
+//import LikeDemo from "./LikeDemo";
+//import Card from "./ServiceCard";
 import Footer from "./Footer";
 import { SERVICES } from "../../constants/config";
 
@@ -26,14 +26,15 @@ class Success extends React.Component {
     const { id, isLoggedIn, t } = this.props;
     if(!isLoggedIn)
       return <Redirect to={SERVICES[id].url} />
-    const deps = getDependentServices(SERVICES[id].id);
+    //const deps = getDependentServices(SERVICES[id].id);
     return (<Wrapper>
       <TopHalf>
         <h2>{t("Congratulations!")}</h2>
-        <h3>{t("You received your")} {t(SERVICES[id].displayName)}</h3>
+        <h3>{t(SERVICES[id].displayName)} {t("You received your")}</h3>
         <SuccessImage src={SuccessIcon} />
         <p>{t("Your claims are stored in your uPort app")}</p>
       </TopHalf>
+      {/*
       <BotHalf>
         <Grid>
           <Spacer span={1} />
@@ -64,6 +65,7 @@ class Success extends React.Component {
           </Col>
         </Grid>
       </BotHalf>
+            */}
       <Footer />
     </Wrapper>)
   }
@@ -100,6 +102,7 @@ const TopHalf = styled.section`
     font-weight: 600;
   }
 `;
+/*
 const BotHalf = styled.div`
   background: ${theme.gradient1};
   padding: 30px 20px;
@@ -123,15 +126,18 @@ const CardsLabel = styled.h4`
     height: 0.875rem;
   `)}
 `;
+*/
 const SuccessImage = styled.img`
   display: block;
   margin: 35px auto;
   max-width: 100%;
 `;
+/*
 const Center = styled.div`
   display: flex;
   justify-content: center;
 `;
+*/
 
 function mapStateToProps(state) {
   return {

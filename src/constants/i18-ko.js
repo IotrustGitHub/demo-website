@@ -177,9 +177,9 @@ export default {
   "Tap 'Accept' in your uPort app to receive your claims": "발급 받으시려면 앱에서 승인 버튼을 눌러주세요",
 
   // Success
-  "Congratulations!": "Congratulations!",
-  "You received your": "You received your",
-  "Your claims are stored in your uPort app": "Your claims are stored in your uPort app.",
+  "Congratulations!": "축하합니다!",
+  "You received your": "발급이 완료되었습니다",
+  "Your claims are stored in your uPort app": "발급된 정보는 앱에 저장되어 있습니다",
   "Services that honor": "Services that honor",
   "Back to Dashboard": "Back to Dashboard",
 
