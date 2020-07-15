@@ -5,7 +5,7 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import resourceBundle from "./constants/i18-resource";
 
 const options = {
-  fallbackLng: "en",
+  fallbackLng: "ko",
   debug: process.env.REACT_APP_TARGET_ENV !== "prod",
   interpolation: {
     escapeValue: false,
