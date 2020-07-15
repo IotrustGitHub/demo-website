@@ -196,9 +196,9 @@ export default {
   "regnBenefits": "With your City ID you have easy and quick access to numerous services and programs in uPortlandia",
 
   // Redirect
-  "See you later!": "See you later!",
-  "You are leaving the uPortlandia dashboard":  "You are leaving the uPortlandia dashboard and will be automatically redirected to",
-  "website to continue": "website to continue.",
+  "See you later!": "잠시만 기다려주세요.",
+  "You are leaving the uPortlandia dashboard":  "",
+  "website to continue": "화면으로 연결 중입니다.",
   "Bye!": "Bye!",
 
   "Get a digital verification of your": "Get a digital verification of your",
