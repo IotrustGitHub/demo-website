@@ -18,18 +18,18 @@ export default {
   "make sure you have the uport app downloaded": "Psst... Make sure you have the uPort app downloaded",
 
   //ServiceCard"
-  "youll be asked to share": "You'll be asked to share",
-  "credential included": "credential included",
-  "credentials included": "credentials included",
+  "youll be asked to share": "다음 정보가 필요합니다.",
+  "credential included": "개의 크리덴셜이 포함됩니다.",
+  "credentials included": "개의 크리덴셜이 포함됩니다.",
   "credentials included in": "Credentials included in",
-  "getClaimLabel": "Get",
+  "getClaimLabel": "발급받기",
 
   // Footer
   "Powered by": "Powered by",
 
-  "The City of uPortlandia": "The City of uPortlandia",
-  "cityIdDisplayName": "City ID",
-  "cityIdDescription": "Identify yourself with one click. Get a digital City ID. Enjoy quick, seamless, and often free access to many city services.",
+  "The City of uPortlandia": "전자건강보험증 발급받기",
+  "cityIdDisplayName": "전자건강보험증",
+  "cityIdDescription": "간단한 클릭 몇 번으로 간편하게 전자건강보험증을 발급받을 수 있습니다.",
   "cityIdStep1": "Login with uPort",
   "cityIdStep2": "Enter your information",
   "cityIdStep3": "Get verified",
@@ -87,10 +87,10 @@ export default {
   "Salary": "Salary",
   "Date of Employment": "Date of Employment",
   "Company Name": "Company Name",
-  "First Name": "First Name",
-  "Last Name": "Last Name",
-  "Address": "Address",
-  "Date of Birth": "Date of Birth",
+  "First Name": "이름",
+  "Last Name": "성",
+  "Address": "주소",
+  "Date of Birth": "생년월일",
 
   "CityID": "City ID",
   "City ID": "City ID",

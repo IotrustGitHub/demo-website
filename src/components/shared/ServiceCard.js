@@ -79,7 +79,7 @@ class HomeCard extends React.Component {
               </ShareClaims>}
               <Button onClick={this.promptAndRedirect}>
                 <img src={popupIcon} alt="" />
-                {t("getClaimLabel")} {" "} {name}
+                {name} {" "} {t("getClaimLabel")}
               </Button>
             </Issued>
           </Col>
