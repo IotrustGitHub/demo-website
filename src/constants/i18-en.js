@@ -168,6 +168,7 @@ export default {
   "No verified information to receive": "No verified information to receive",
   "This information will be stored in your app": "This information will be stored in your app",
   "Subject": "Subject",
+  "Issued Date": "Issued Date",
   "Tap to open in a mobile browser": "Tap to open in a mobile browser",
   "You're Interacting with": "You're interacting with",
   "Verified information you'll receive": "Verified information you'll receive",

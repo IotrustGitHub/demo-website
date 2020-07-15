@@ -73,7 +73,9 @@ class Landing extends React.Component {
             <h4>{t("regnSuccessHeading2")}</h4>
             <p>
               {t("regnSuccessText2")}
+              {/*
               {t(SERVICES[serviceId].entity)}
+              */}
               {t("regnSuccessText3")}
             </p>
           </Card>
