@@ -168,9 +168,10 @@ const _LoginLink = styled.a`
   }
 `;
 export const LoginLink = props => {
+  const { t } = useTranslation();
   return (<_LoginLink className="long" secondary {...props}>
     <LoginButtonLogo src={uPortWhite} />
-    {` ${props.text || "Login with uPort"}`}
+    {` ${props.text || t("Login with uPort")}`}
   </_LoginLink>);
 }
 
