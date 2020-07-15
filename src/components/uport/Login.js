@@ -214,7 +214,7 @@ class UportLogin extends React.Component {
                   </React.Fragment>
                   : <NoInfoReq>{t("No information requested")}</NoInfoReq>}
               </ReqServices>
-              <p>{t("This information will be shared with")} {t(issuer.name)}</p>
+              <p>{t(issuer.name)} {t("This information will be shared with")}</p>
             </Info.Scrollable>
           </Info>
         </Content.Grid>
