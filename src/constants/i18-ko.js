@@ -101,7 +101,7 @@ export default {
   "Insurance Coverage": "Insurance Coverage",
   "Employment Verification": "Employment Verification",
 
-  "get your": "Get your",
+  "get your": "발급받기",
   "Receive your": "Receive your",
   "back": "Back",
   "Login with uPort": "Login with uPort",
