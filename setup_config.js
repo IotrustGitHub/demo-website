@@ -17,7 +17,7 @@ module.exports.config = {
 
 module.exports.ISSUER_PROFILES = [{
   id: "CITY_ID",
-  name: "The City of uPortlandia",
+  name: "국민건강보험공단",
   url: {
     stage: "https://uportlandia.uport.space/city",
     prod: "https://uportlandia.uport.me/city"
