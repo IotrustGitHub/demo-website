@@ -9,8 +9,8 @@ module.exports.config = {
     prod: "did-on-fido"
   },
   domain: {
-    stage: "uportlandia.uport.space",
-    prod: "uportlandia.uport.me"
+    stage: "",
+    prod: ""
   },
   cors: true
 };
@@ -22,7 +22,8 @@ module.exports.ISSUER_PROFILES = [{
     stage: "https://uportlandia.uport.space/city",
     prod: "https://uportlandia.uport.me/city"
   },
-  profileImage: "src/images/city-logo.png"
+  //profileImage: "src/images/city-logo.png"
+  profileImage: "src/images/NHIS_logo.png"
 }/*, {
   id: "DIPLOMA",
   name: "The University of uPortlandia",

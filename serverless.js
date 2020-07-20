@@ -4,7 +4,7 @@ const slsConfig = {
   service: config.serviceName,
   provider: {
     name: "aws",
-    runtime: "nodejs8.10",
+    runtime: "nodejs10.x",
     region: config.region,
     environment: {
       ISSUERS: `$\{ssm:${config.ssmParam.issuers}~true}`
@@ -28,7 +28,7 @@ const slsConfig = {
   functions: {
     server: {
       handler: "src/server.handler",
-      timeout: 12,
+      timeout: 30,
       events: [{
         http: {
           method: "ANY",

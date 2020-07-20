@@ -1,2 +1,2 @@
 // Do not edit
-export default "https://7hilw36156.execute-api.us-east-1.amazonaws.com/stage/";
+export default "https://eecjirloa9.execute-api.ap-northeast-2.amazonaws.com/stage/";

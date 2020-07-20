@@ -3,6 +3,7 @@ const express = require("serverless-express/express");
 const bodyParser = require("body-parser");
 const Credentials = require("uport-credentials").Credentials;
 const verifyJWT = require("did-jwt").verifyJWT;
+const registerResolver = require('ethr-did-resolver').default;
 
 const RPC_URL = "https://mainnet.infura.io/v3/5ffc47f65c4042ce847ef66a3fa70d4c";
 
@@ -69,8 +70,11 @@ app.post("/api/send_verification", async (req, res) => {
 app.post("/api/verify_credentials", async (req, res) => {
   const { serviceId, token } = req.body;
   const credentials = getCredentials(serviceId);
+  console.log('</api/verify_credentials> credentials = ', credentials)
   const response = await verifyJWT(token, { audience: credentials.did });
+  console.log('</api/verify_credentials> response = ', response)
   const profile = await credentials.processDisclosurePayload(response);
+  console.log('</api/verify_credentials> profile = ', profile)
   profile.publicEncKey = profile.boxPub;
   res.json({ profile });
 });
