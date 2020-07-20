@@ -25,6 +25,7 @@ async function getKeyId() {
           reject(err);
           return;
         }
+        console.log('<getKeyId> data.Keys =', data.Keys)
         resolve(data.Keys);
       });
     });
@@ -101,6 +102,7 @@ async function getKeyId() {
       continue;
     }
   }
+  console.log("<getKeyId> selectedKey.KeyId = ", selectedKey.KeyId)
   return selectedKey.KeyId;
 }
 
@@ -248,21 +250,27 @@ async function setup() {
   const args = argParse();
 
   // Prerequisites
+  console.log('[Prerequisites]')
   await prerequisites();
 
   // Save issuer secrets in SSM
+  console.log('[Save issuer secrets in SSM]')
   await saveIssuerSecrets(args.env);
 
   // Deploy Lambda
+  console.log('[Deploy Lambda]')
   await slsDeploy(args.env);
 
   // Save Signer Url
+  console.log('[Save Signer Url]')
   saveSignerUrl(args.env);
 
   // Create S3 Bucket for static assets
+  console.log('[Create S3 Bucket for static assets]')
   await createS3Bucket(config.s3Bucket[args.env]);
 
   // Deploy Static site
+  console.log('[Deploy Static site]')
   await deployStatic(args.env);
 
   console.log(`Your bucket URL is:\n\nhttp://${config.s3Bucket[args.env]}.s3-website.${config.region}.amazonaws.com/\n`);

@@ -1,12 +1,12 @@
 module.exports.config = {
-  region: "us-east-1",
-  serviceName: "uportlandia",
+  region: "ap-northeast-2",
+  serviceName: "did-on-fido",
   ssmParam:{
-    issuers: "/uportlandia/${opt:stage}/issuers"
+    issuers: "/did-on-fido/${opt:stage}/issuers"
   },
   s3Bucket: {
-    stage: "cleverland-stage",
-    prod: "cleverland-prod"
+    stage: "did-on-fido",
+    prod: "did-on-fido"
   },
   domain: {
     stage: "uportlandia.uport.space",
@@ -23,7 +23,7 @@ module.exports.ISSUER_PROFILES = [{
     prod: "https://uportlandia.uport.me/city"
   },
   profileImage: "src/images/city-logo.png"
-}, {
+}/*, {
   id: "DIPLOMA",
   name: "The University of uPortlandia",
   url: {
@@ -71,4 +71,4 @@ module.exports.ISSUER_PROFILES = [{
     prod: "https://uportlandia.uport.me/museum"
   },
   profileImage: "src/images/museum-logo.png"
-}];
+}*/];

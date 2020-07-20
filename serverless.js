@@ -12,7 +12,7 @@ const slsConfig = {
   },
   custom: {
     "serverless-offline": {
-      port: 3001
+      port: 8001
     },
     output: {
       file: "stack.json"
