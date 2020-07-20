@@ -121,7 +121,7 @@ const CITY_ID = { // This should match the Registration Config
   entity: "The City of uPortlandia",
   description: "cityIdDescription",
   url: "/city",
-  claim: "Uportlandia City ID",
+  claim: "전자건강보험증",
   steps: [
     "cityIdStep1",
     "cityIdStep2",
