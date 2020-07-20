@@ -7,6 +7,7 @@ const resolve = require("did-resolver");
 
 const { ISSUER_PROFILES } = require("../setup_config");
 
+const RPC_URL = "https://mainnet.infura.io/v3/5ffc47f65c4042ce847ef66a3fa70d4c";
 //  ---- You probably don't need to change anything below this ----
 
 async function ipfsAdd (data) {
@@ -32,6 +33,7 @@ async function uploadAppImage (filePath) {
 async function createIssuer (app, env) {
   console.log("Registering", app.name, "...")
   const { did, privateKey } = uport.Credentials.createIdentity();
+  console.log('<createIssuer> did =', did)
   const profileImage = await uploadAppImage(app.profileImage);
   const profile = {
     name: app.name,
@@ -40,15 +42,20 @@ async function createIssuer (app, env) {
       "/": profileImage
     }
   };
+  console.log('<createIssuer> profile =', profile)
   const credentials = new uport.Credentials({
     appName: app.name,
     did,
-    privateKey
+    privateKey,
+    ethrConfig: {
+      rpcUrl: RPC_URL
+    }
   });
   const jwt = await credentials.createVerification({
     sub: did,
     claim: profile
   });
+  console.log('<createIssuer> jwt =', jwt)
   const buffer = Buffer.from(jwt);
   const hash = await ipfsAdd(buffer);
   const data = {
@@ -56,6 +63,7 @@ async function createIssuer (app, env) {
     key: privateKey,
     vc: [ `/ipfs/${hash}` ]
   };
+  console.log('<createIssuer> data =', data)
   return {
     [app.id]: data
   };
