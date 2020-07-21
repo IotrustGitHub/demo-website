@@ -7,9 +7,14 @@ import { withTranslation } from "react-i18next";
 import { large, medium, mediumOnly } from "../shared/grid";
 import * as theme from "../shared/theme";
 import { CapsuleLinkButton } from "../shared/elements";
+/*
 import cityIdIcon from "../../images/city-id-icon.svg";
 import uPortAppIcon from "../../images/uport-app-icon.svg";
 import servicesIcon from "../../images/services-icon.svg";
+*/
+import cityIdIcon from "../../images/icon-1.png";
+import uPortAppIcon from "../../images/icon-2.png";
+import servicesIcon from "../../images/icon-3.png";
 
 import { home } from "../../constants/config";
 
@@ -39,7 +44,10 @@ class Header extends React.Component {
             <p>{t("getRegistrationDescription")}</p>
           </Hero.Step>
           <Hero.Step>
+            {/*
             <Hero.Step.Icon src={uPortAppIcon} style={{ position: "relative", left: "-15px" }} />
+            */}
+            <Hero.Step.Icon src={uPortAppIcon}/>
             <h4>{t("Store it in the uport app")}</h4>
             <p>{t("Own your information")}</p>
           </Hero.Step>
