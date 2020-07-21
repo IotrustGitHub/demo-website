@@ -10,7 +10,7 @@ import InsuranceIcon from "../images/insurance-logo.png";
 import PharmacyIcon from "../images/pharmacy-logo.png";
 import TransportIcon from "../images/transport-logo.png";
 import MuseumIcon from "../images/museum-logo.png";
-import COUNTRIES from "./countries";
+//import COUNTRIES from "./countries";
 
 import getSignerUrl from "./signerUrl";
 
@@ -34,6 +34,7 @@ export const registration = {
     ]
   },
   form: {
+    /*
     firstName: {
       label: "First Name",
       defaultValue: "",
@@ -46,12 +47,20 @@ export const registration = {
       type: "text",
       required: true
     },
+    */
+    fullName: {
+      label: "Full Name",
+      defaultValue: "",
+      type: "text",
+      required: true
+    },
     address: {
       label: "Address",
       defaultValue: "",
       type: "text",
       required: true
     },
+    /*
     city: {
       label: "City",
       defaultValue: "",
@@ -77,6 +86,7 @@ export const registration = {
       items: COUNTRIES,
       required: true
     },
+    */
     dob: {
       label: "Date of Birth",
       defaultValue: "",
@@ -127,7 +137,11 @@ const CITY_ID = { // This should match the Registration Config
     "cityIdStep2",
     "cityIdStep3",
     "cityIdStep4"
-  ]
+  ],
+  claimData: {
+    "Insurance ID": "2020-1122-2211-22334",
+    "Expired Date": "2022-12-31",
+  }
 };
 
 // All Services
@@ -282,6 +296,14 @@ const YOURSELF = {
 };
 
 // Claims
+const FULL_NAME = {
+  id: "fullName",
+  name: "Full Name",
+  displayName: "Full Name",
+  issuedBy: [CITY_ID],
+  honoredBy: [DIPLOMA, INSURANCE, MUSEUM, TRANSPORT, PHARMACY]
+}
+
 const FIRST_NAME = {
   id: "firstName",
   name: "First Name",
@@ -312,6 +334,12 @@ const ADDRESS = {
   displayName: "Address",
   issuedBy: [CITY_ID],
   honoredBy: [DIPLOMA, INSURANCE, MUSEUM, TRANSPORT, PHARMACY]
+};
+
+const INSURANCE_ID = {
+  name: "Insurance ID",
+  displayName: "Insurance ID",
+  issuedBy: [CITY_ID]
 };
 
 const SCHOOL_NAME = {
@@ -406,11 +434,15 @@ const MUSEUM_MEMBERSHIP = {
 };
 
 // Attach claims to services
-CITY_ID.generatedClaims = [FIRST_NAME, LAST_NAME, ADDRESS, DATE_OF_BIRTH];
+//CITY_ID.generatedClaims = [FIRST_NAME, LAST_NAME, ADDRESS, DATE_OF_BIRTH];
+CITY_ID.generatedClaims = [FULL_NAME, ADDRESS, DATE_OF_BIRTH, INSURANCE_ID];
+CITY_ID.requiredClaims = [FULL_NAME, ADDRESS, DATE_OF_BIRTH];
+/*
 CITY_ID.requiredClaims = CITY_ID.generatedClaims.map(c => ({
   ...c,
   issuedBy: [YOURSELF]
 }));
+*/
 DIPLOMA.requiredClaims = [FIRST_NAME, LAST_NAME, DATE_OF_BIRTH];
 DIPLOMA.requiredServices = [CITY_ID];
 DIPLOMA.generatedClaims = [SCHOOL_NAME, PROGRAM_NAME, GRADUATION_YEAR, FINAL_GRADES];
