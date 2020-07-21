@@ -17,7 +17,7 @@ import getSignerUrl from "./signerUrl";
 // Home Page
 export const home = {
   logo: logo,
-  logoLink: "https://dcentwallet.com/",
+  logoLink: "https://www.nhis.or.kr/retrieveHomeMain.xx",
   name: "전자건강보험증"
 };
 
