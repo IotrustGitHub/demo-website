@@ -38,7 +38,9 @@ class Header extends React.Component {
       </Hero.Welcome>
       */}
       <Hero.Content>
-        <h3>{t("Its Simple")}</h3>
+        <h1>{t("Its Simple")}</h1>
+        <h1>{t("Issue Service")}</h1>
+        <h1>___</h1>
         <Hero.Steps>
           <Hero.Step>
             <Hero.Step.Icon src={cityIdIcon} />
@@ -75,6 +77,18 @@ Hero.Content = styled.div`
   padding: 60px 20px 0;
   color: #fff;
   ${medium("padding: 60px 20vw 0;")}
+
+  h1 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    margin: 0 0 20px;
+    text-align: center;
+    text-transform: uppercase;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 
   h3 {
     font-size: 0.875rem;
