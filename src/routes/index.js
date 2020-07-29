@@ -8,6 +8,7 @@ import App from "../components/AppContainer";
 import Redirect from "../components/Redirect";
 import Debug from "../components/Debug";
 import Home from "../components/Home";
+import Login from "../components/Login"
 import Registration from "../components/Registration";
 import Service from "../components/Service";
 
@@ -15,8 +16,12 @@ export default () => (<ConnectedRouter history={history}>
   <Switch>
     <Route path="/" exact render={() =>
       <App>
-        <Home />
+        <Login />
       </App>} />
+    <Route path="/start" render={() =>
+      <App>
+        <Home />
+      </App>}  />
     <Route path="/redirect" render={() =>
       <App>
         <Redirect />

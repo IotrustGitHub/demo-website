@@ -286,6 +286,7 @@ const MUSEUM = {
   }
 };
 
+/*
 const YOURSELF = {
   id: "YOURSELF",
   name: "Yourself, Any Issuer",
@@ -294,6 +295,7 @@ const YOURSELF = {
   entity: "Yourself, Any Issuer",
   description: "Yourself, Any Issuer"
 };
+*/
 
 // Claims
 const FULL_NAME = {

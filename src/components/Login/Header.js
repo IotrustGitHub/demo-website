@@ -12,11 +12,8 @@ import cityIdIcon from "../../images/city-id-icon.svg";
 import uPortAppIcon from "../../images/uport-app-icon.svg";
 import servicesIcon from "../../images/services-icon.svg";
 */
-import cityIdIcon from "../../images/icon-1.png";
-import uPortAppIcon from "../../images/icon-2.png";
-import servicesIcon from "../../images/icon-3.png";
 
-//import { home } from "../../constants/config";
+import { home } from "../../constants/config";
 
 class Header extends React.Component {
   state = {
@@ -25,7 +22,6 @@ class Header extends React.Component {
   render() {
     const { t } = this.props;
     return (<Hero>
-      {/*
       <Hero.Welcome>
         <a href={home.logoLink} target="_blank">
           <Logo src={home.logo} />
@@ -34,34 +30,8 @@ class Header extends React.Component {
         <h1>{home.name}</h1>
         <p>{t("tryDemo")}.</p>
         <p>{t("Play around")}.</p>
-        <CapsuleLinkButton to="/city">{t("Get Started")}</CapsuleLinkButton>
+        <CapsuleLinkButton to="/start">{t("Get Started")}</CapsuleLinkButton>
       </Hero.Welcome>
-      */}
-      <Hero.Content>
-        <h3>{t("Its Simple")}</h3>
-        <Hero.Steps>
-          <Hero.Step>
-            <Hero.Step.Icon src={cityIdIcon} />
-            <h4>{t("getRegistration")}</h4>
-            <p>{t("getRegistrationDescription")}</p>
-          </Hero.Step>
-          <Hero.Step>
-            {/*
-            <Hero.Step.Icon src={uPortAppIcon} style={{ position: "relative", left: "-15px" }} />
-            */}
-            <Hero.Step.Icon src={uPortAppIcon}/>
-            <h4>{t("Store it in the uport app")}</h4>
-            <p>{t("Own your information")}</p>
-          </Hero.Step>
-          <Hero.Step>
-            <Hero.Step.Icon src={servicesIcon} />
-            <h4>{t("Get access to city services")}</h4>
-            <p>{t("Enjoy perks and benefits")}</p>
-          </Hero.Step>
-        </Hero.Steps>
-        <hr />
-        <h3>{t("Ready? Lets do this")}</h3>
-      </Hero.Content>
     </Hero>);
   }
 }
@@ -127,7 +97,7 @@ Hero.Welcome = styled.div`
   background: ${theme.header.bg};
   background-size: cover;
   color: ${theme.homeHeader.textColor};
-  padding: 2vh 20px 10vh;
+  padding: 25vh 20px 40vh;
   position: relative;
   z-index: 2;
   text-align: center;
@@ -159,12 +129,11 @@ Hero.Welcome = styled.div`
     margin-top: 20px;
   }
 `;
-/*
 const Logo = styled.img`
   display: block;
   margin: 10px auto 70px;
   width: 32px;
 `;
-*/
+
 export default withTranslation()(Header);
 
