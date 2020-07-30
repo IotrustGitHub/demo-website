@@ -1,7 +1,7 @@
 import axios from 'axios'
 import base64js from './base64'
 
-const WEBAUTHN = 'http://didonfido.cafe24.com'
+const WEBAUTHN = 'https://didonfido.cafe24.com'
 //const WEBAUTHN = 'https://webauthn.io'
 
 const bufferDecode = (value) => {
