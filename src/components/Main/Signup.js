@@ -30,13 +30,15 @@ class Signup extends React.Component {
     const userid = this.props.userid
     console.log('onClickSignup')
     console.log('this.props = ', this.props)
+
     webauthn.makeCredential(userid).then((isSuccess) => {
       if (!isSuccess) {
         this.setErrorState()
       } else {
         this.setState({
-          errorMessage: ''
+          errorMessage: '축하합니다. 가입되었습니다.'
         })
+        window.location.replace('/start')
       }
     }).catch(() => {
       console.log('[error] FIDO makeCredential')
