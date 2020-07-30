@@ -6,18 +6,42 @@ import { withTranslation } from "react-i18next";
 
 import { large, medium, mediumOnly } from "../shared/grid";
 import * as theme from "../shared/theme";
-import { CapsuleLinkButton } from "../shared/elements";
-/*
-import cityIdIcon from "../../images/city-id-icon.svg";
-import uPortAppIcon from "../../images/uport-app-icon.svg";
-import servicesIcon from "../../images/services-icon.svg";
-*/
+import { CapsuleButton } from "../shared/elements";
+import webauthn from '../../webauthn/webauthn-client'
 
 import { home } from "../../constants/config";
 
-class Header extends React.Component {
+class Signup extends React.Component {
   state = {
-    devClickCount: 0
+    errorMessage: ''
+  }
+  constructor(props) {
+    super(props)
+    console.log('props =', props)
+    this.onClickSignup = this.onClickSignup.bind(this)
+    this.setErrorState = this.setErrorState.bind(this)
+  }
+  setErrorState () {
+    this.setState({
+      errorMessage: '가입에 실패하였습니다. 다시 시도해 주세요.'
+    })
+  }
+  onClickSignup () {
+    const userid = this.props.userid
+    console.log('onClickSignup')
+    console.log('this.props = ', this.props)
+    webauthn.makeCredential(userid).then((isSuccess) => {
+      if (!isSuccess) {
+        this.setErrorState()
+      } else {
+        this.setState({
+          errorMessage: ''
+        })
+      }
+    }).catch(() => {
+      console.log('[error] FIDO makeCredential')
+      this.setErrorState()
+    })
   }
   render() {
     const { t } = this.props;
@@ -30,8 +54,8 @@ class Header extends React.Component {
         <h1>{home.name}</h1>
         <p>{t("tryDemo")}.</p>
         <p>{t("Play around")}.</p>
-        <p>-</p>
-        <h2>{t("Use Mobile App")}</h2>
+        <p><u>{ this.state.errorMessage }</u></p>
+        <CapsuleButton onClick={this.onClickSignup}>{t("Sign Up")}</CapsuleButton>
       </Hero.Welcome>
     </Hero>
     );
@@ -126,7 +150,7 @@ Hero.Welcome = styled.div`
     ${medium("font-size: 1.25rem;")}
   }
 
-  ${CapsuleLinkButton} {
+  ${CapsuleButton} {
     font-size: 1rem;
     margin-top: 20px;
   }
@@ -137,5 +161,5 @@ const Logo = styled.img`
   width: 32px;
 `;
 
-export default withTranslation()(Header);
+export default withTranslation()(Signup);
 

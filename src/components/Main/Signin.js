@@ -15,7 +15,7 @@ import servicesIcon from "../../images/services-icon.svg";
 
 import { home } from "../../constants/config";
 
-class Header extends React.Component {
+class Signin extends React.Component {
   state = {
     devClickCount: 0
   }
@@ -30,8 +30,7 @@ class Header extends React.Component {
         <h1>{home.name}</h1>
         <p>{t("tryDemo")}.</p>
         <p>{t("Play around")}.</p>
-        <p>-</p>
-        <h2>{t("Use Mobile App")}</h2>
+        <CapsuleLinkButton to="/start">{t("Sign In")}</CapsuleLinkButton>
       </Hero.Welcome>
     </Hero>
     );
@@ -137,5 +136,5 @@ const Logo = styled.img`
   width: 32px;
 `;
 
-export default withTranslation()(Header);
+export default withTranslation()(Signin);
 

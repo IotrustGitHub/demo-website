@@ -4,11 +4,14 @@ import styled from "styled-components";
 
 import { showAppDownload } from "../../selectors";
 import Basic from "./Basic";
+import Signin from "./Signin";
+import Signup from "./Signup";
 import qs from 'qs'
 import webauthn from '../../webauthn/webauthn-client'
 
 class Main extends React.Component {
   state = {
+    userid: undefined,
     isUserExist: false
   }
 
@@ -18,21 +21,29 @@ class Main extends React.Component {
     const query = qs.parse(location.search, {ignoreQueryPrefix: true})
     const userid = query.userid
     console.log('userid = ', userid)
+
     webauthn.checkUserExists(userid).then((isUserExist) => {
       console.log('isUserExist = ', isUserExist)
       this.setState({
+        userid: userid,
         isUserExist: isUserExist
       })
     })
   }
 
   render() {
-    if (this.state.isUserExist) {
+    console.log('this.state.userid = ', this.state.userid)
+    if (typeof this.state.userid === "undefined") {
       return (<Wrapper>
+        <Basic />
+      </Wrapper>)
+    } else if (this.state.isUserExist) {
+      return (<Wrapper>
+        <Signin userid={this.state.userid} />
       </Wrapper>)
     } else {
       return (<Wrapper>
-        <Basic />
+        <Signup userid={this.state.userid} />
       </Wrapper>)
     }
   }
