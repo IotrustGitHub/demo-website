@@ -55,7 +55,8 @@ const makeCredential = async (userid) => {
                 userVerification: user_verification,
                 residentKeyRequirement: resident_key_requirement,
                 txAuthExtension: txAuthSimple_extension,
-            }
+            },
+            withCredentials: true
         })
         console.log('response = ', response)
         const makeCredentialOptions = response.data
