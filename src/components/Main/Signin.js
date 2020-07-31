@@ -6,18 +6,47 @@ import { withTranslation } from "react-i18next";
 
 import { large, medium, mediumOnly } from "../shared/grid";
 import * as theme from "../shared/theme";
-import { CapsuleLinkButton } from "../shared/elements";
-/*
-import cityIdIcon from "../../images/city-id-icon.svg";
-import uPortAppIcon from "../../images/uport-app-icon.svg";
-import servicesIcon from "../../images/services-icon.svg";
-*/
+import { CapsuleButton, CapsuleLinkButton } from "../shared/elements";
+import webauthn from '../../webauthn/webauthn-client'
 
 import { home } from "../../constants/config";
+import ActionButton from './ActionButton'
 
 class Signin extends React.Component {
   state = {
-    devClickCount: 0
+    isSigninSuccess: false,
+    errorMessage: '아래 버튼을 눌러 로그인해주세요.'
+  }
+  constructor(props) {
+    super(props)
+    console.log('props =', props)
+    this.onClickSignin = this.onClickSignin.bind(this)
+    this.setErrorState = this.setErrorState.bind(this)
+  }
+  setErrorState () {
+    this.setState({
+      isSigninSuccess: false,
+      errorMessage: '로그인에 실패하였습니다. 다시 시도해 주세요.'
+    })
+  }
+  onClickSignin () {
+    const userid = this.props.userid
+    console.log('onClickSignin')
+    console.log('this.props = ', this.props)
+
+    webauthn.makeCredential(userid).then((isSuccess) => {
+      if (!isSuccess) {
+        this.setErrorState()
+      } else {
+        this.setState({
+          isSigninSuccess: true,
+          errorMessage: '축하합니다. 전자건강보험증 발급을 받아보세요.'
+        })
+      }
+    }).catch(() => {
+      console.log('[error] FIDO makeCredential')
+      this.setErrorState()
+    })
   }
   render() {
     const { t } = this.props;
@@ -30,7 +59,12 @@ class Signin extends React.Component {
         <h1>{home.name}</h1>
         <p>{t("tryDemo")}.</p>
         <p>{t("Play around")}.</p>
-        <CapsuleLinkButton to="/start">{t("Sign In")}</CapsuleLinkButton>
+        <h3>{ this.state.errorMessage }</h3>
+        <ActionButton 
+          isLogin={this.state.isSignupSuccess} 
+          onClick={this.onClickSignup} 
+          label={t("Sign In")}
+        />
       </Hero.Welcome>
     </Hero>
     );
@@ -124,11 +158,24 @@ Hero.Welcome = styled.div`
     line-height: 1.25;
     ${medium("font-size: 1.25rem;")}
   }
+  h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.25;
+    margin-top: 20px;
 
+    ${medium("font-size: 1.25rem;")}
+  }
+
+  ${CapsuleButton} {
+    font-size: 1rem;
+    margin-top: 20px;
+  }
   ${CapsuleLinkButton} {
     font-size: 1rem;
     margin-top: 20px;
   }
+
 `;
 const Logo = styled.img`
   display: block;

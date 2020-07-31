@@ -15,7 +15,7 @@ class ActionButton extends React.Component {
     if (this.props.isLogin) {
       return <CapsuleLinkButton to="/start">{t("Get Started")}</CapsuleLinkButton>
     } else {
-      return <CapsuleButton onClick={this.props.onClick}>{t("Sign Up")}</CapsuleButton>
+      return <CapsuleButton onClick={this.props.onClick}>{this.props.label}</CapsuleButton>
     }
   }
 }

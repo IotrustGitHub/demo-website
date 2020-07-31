@@ -60,7 +60,11 @@ class Signup extends React.Component {
         <p>{t("tryDemo")}.</p>
         <p>{t("Play around")}.</p>
         <h3>{ this.state.errorMessage }</h3>
-        <ActionButton isLogin={this.state.isSignupSuccess} onClick={this.onClickSignup} />
+        <ActionButton 
+          isLogin={this.state.isSignupSuccess} 
+          onClick={this.onClickSignup} 
+          label={t("Sign Up")}
+        />
       </Hero.Welcome>
     </Hero>
     );
