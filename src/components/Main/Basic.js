@@ -99,7 +99,7 @@ Hero.Welcome = styled.div`
   background: ${theme.header.bg};
   background-size: cover;
   color: ${theme.homeHeader.textColor};
-  padding: 25vh 20px 40vh;
+  padding: 20vh 20px 45vh;
   position: relative;
   z-index: 2;
   text-align: center;
