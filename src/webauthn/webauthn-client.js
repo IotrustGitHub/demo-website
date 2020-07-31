@@ -112,7 +112,66 @@ const registerNewCredential = async (newCredential) => {
 
 const verifyCredential = async (userid) => {
     console.log('ENTER verifyCredential')
-    return await new Promise((resolve) => {resolve(true)})
+
+    var user_verification = 'discouraged'
+    var txAuthSimple_extension = ''
+
+    try {
+        const response = await axios.get(WEBAUTHN + '/assertion/' + userid, {
+            params: {
+                userVer: user_verification,
+                txAuthExtension: txAuthSimple_extension
+            },
+            withCredentials: true
+        })
+
+        let makeAssertionOptions = response.data
+        console.log("Assertion Options:");
+        console.log(makeAssertionOptions);
+        makeAssertionOptions.publicKey.challenge = bufferDecode(makeAssertionOptions.publicKey.challenge);
+        makeAssertionOptions.publicKey.allowCredentials.forEach(function (listItem) {
+            listItem.id = bufferDecode(listItem.id)
+        });
+        console.log(makeAssertionOptions);
+        const credential = await navigator.credentials.get({
+                publicKey: makeAssertionOptions.publicKey
+            })
+        console.log(credential);
+        const isSuccess = await verifyAssertion(credential);
+
+        return isSuccess
+    } catch (error) {
+        console.warn(error)
+        return false
+    }
+}
+
+const verifyAssertion = async (assertedCredential) => {
+    console.log('calling verify')
+    let authData = new Uint8Array(assertedCredential.response.authenticatorData);
+    let clientDataJSON = new Uint8Array(assertedCredential.response.clientDataJSON);
+    let rawId = new Uint8Array(assertedCredential.rawId);
+    let sig = new Uint8Array(assertedCredential.response.signature);
+    let userHandle = new Uint8Array(assertedCredential.response.userHandle);
+
+    try {
+        const response = await axios.post(WEBAUTHN + '/assertion',{
+            id: assertedCredential.id,
+            rawId: bufferEncode(rawId),
+            type: assertedCredential.type,
+            response: {
+                authenticatorData: bufferEncode(authData),
+                clientDataJSON: bufferEncode(clientDataJSON),
+                signature: bufferEncode(sig),
+                userHandle: bufferEncode(userHandle),
+            },
+        }, { withCredentials: true })
+
+        console.log('response =', response)
+        return true
+    } catch (error) {
+        return false
+    }
 }
 
 export default {
