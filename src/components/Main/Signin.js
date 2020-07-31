@@ -34,13 +34,13 @@ class Signin extends React.Component {
     console.log('onClickSignin')
     console.log('this.props = ', this.props)
 
-    webauthn.makeCredential(userid).then((isSuccess) => {
+    webauthn.verifyCredential(userid).then((isSuccess) => {
       if (!isSuccess) {
         this.setErrorState()
       } else {
         this.setState({
           isSigninSuccess: true,
-          errorMessage: '축하합니다. 전자건강보험증 발급을 받아보세요.'
+          errorMessage: '로그인이 완료되었습니다. 전자건강보험증 발급을 받아보세요.'
         })
       }
     }).catch(() => {
@@ -61,8 +61,8 @@ class Signin extends React.Component {
         <p>{t("Play around")}.</p>
         <h3>{ this.state.errorMessage }</h3>
         <ActionButton 
-          isLogin={this.state.isSignupSuccess} 
-          onClick={this.onClickSignup} 
+          isLogin={this.state.isSigninSuccess} 
+          onClick={this.onClickSignin} 
           label={t("Sign In")}
         />
       </Hero.Welcome>

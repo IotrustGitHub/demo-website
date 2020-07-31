@@ -110,7 +110,13 @@ const registerNewCredential = async (newCredential) => {
     }
 }
 
+const verifyCredential = async (userid) => {
+    console.log('ENTER verifyCredential')
+    return await new Promise((resolve) => {resolve(true)})
+}
+
 export default {
     checkUserExists,
-    makeCredential
+    makeCredential,
+    verifyCredential
 }
