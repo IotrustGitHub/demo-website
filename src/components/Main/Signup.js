@@ -6,14 +6,16 @@ import { withTranslation } from "react-i18next";
 
 import { large, medium, mediumOnly } from "../shared/grid";
 import * as theme from "../shared/theme";
-import { CapsuleButton } from "../shared/elements";
+import { CapsuleButton, CapsuleLinkButton } from "../shared/elements";
 import webauthn from '../../webauthn/webauthn-client'
 
 import { home } from "../../constants/config";
+import ActionButton from './ActionButton'
 
 class Signup extends React.Component {
   state = {
-    errorMessage: ''
+    isSignupSuccess: false,
+    errorMessage: '아래 버튼을 눌러 가입해주세요.'
   }
   constructor(props) {
     super(props)
@@ -23,6 +25,7 @@ class Signup extends React.Component {
   }
   setErrorState () {
     this.setState({
+      isSignupSuccess: false,
       errorMessage: '가입에 실패하였습니다. 다시 시도해 주세요.'
     })
   }
@@ -36,9 +39,9 @@ class Signup extends React.Component {
         this.setErrorState()
       } else {
         this.setState({
-          errorMessage: '축하합니다. 가입되었습니다.'
+          isSignupSuccess: true,
+          errorMessage: '축하합니다. 전자건강보험증 발급을 받아보세요.'
         })
-        window.location.replace('/start')
       }
     }).catch(() => {
       console.log('[error] FIDO makeCredential')
@@ -56,8 +59,8 @@ class Signup extends React.Component {
         <h1>{home.name}</h1>
         <p>{t("tryDemo")}.</p>
         <p>{t("Play around")}.</p>
-        <p><u>{ this.state.errorMessage }</u></p>
-        <CapsuleButton onClick={this.onClickSignup}>{t("Sign Up")}</CapsuleButton>
+        <h3>{ this.state.errorMessage }</h3>
+        <ActionButton isLogin={this.state.isSignupSuccess} onClick={this.onClickSignup} />
       </Hero.Welcome>
     </Hero>
     );
@@ -151,11 +154,24 @@ Hero.Welcome = styled.div`
     line-height: 1.25;
     ${medium("font-size: 1.25rem;")}
   }
+  h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.25;
+    margin-top: 20px;
+
+    ${medium("font-size: 1.25rem;")}
+  }
 
   ${CapsuleButton} {
     font-size: 1rem;
     margin-top: 20px;
   }
+  ${CapsuleLinkButton} {
+    font-size: 1rem;
+    margin-top: 20px;
+  }
+
 `;
 const Logo = styled.img`
   display: block;
